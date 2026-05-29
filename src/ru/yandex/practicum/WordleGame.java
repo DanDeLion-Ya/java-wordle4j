@@ -76,7 +76,7 @@ public class WordleGame {
                     hintSymbols.append("-");
                 }
             }
-        } 
+        }
         return hintSymbols.toString();
     }
 
