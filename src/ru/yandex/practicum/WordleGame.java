@@ -76,7 +76,8 @@ public class WordleGame {
                     hintSymbols.append("-");
                 }
             }
-        } return hintSymbols.toString();
+        } 
+        return hintSymbols.toString();
     }
 
     //Добавление слова в список использованных слов
