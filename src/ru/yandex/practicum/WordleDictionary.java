@@ -19,6 +19,7 @@ public class WordleDictionary {
     public List<String> getWords() {
         return words;
     }
+
     //Проверка, содержится ли переданное слово(введённое пользователем) в списке
     public boolean containsWords(String userWord) {
         if (words.contains(userWord)) {
@@ -27,6 +28,7 @@ public class WordleDictionary {
             return false;
         }
     }
+
     // Получение случайного слова!
     public String getRandomWord() throws NoSuchElementException {
         Random random = new Random();

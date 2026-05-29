@@ -60,6 +60,7 @@ public class WordleGame {
     protected boolean checkCorrectAnswer(String userWord) {
         return answer.equals(userWord);
     }
+
     //Получение символьных подсказок
     protected String getHint(String userWord) {
         StringBuilder hintSymbols = new StringBuilder();
@@ -77,8 +78,9 @@ public class WordleGame {
             }
         } return hintSymbols.toString();
     }
+
     //Добавление слова в список использованных слов
-    protected void addUsedWord(String userWord){
+    protected void addUsedWord(String userWord) {
         if (!usedWords.containsKey(userWord)) {
             usedWords.put(userWord, 1);
             log.println("Слово " + userWord + " добавлено в список использованных слов (usedWords)");
@@ -88,6 +90,7 @@ public class WordleGame {
             log.println("Слово " + userWord + " вводится повторно!");
         }
     }
+
     //Получение подсказки от компьютера
     protected String getHintFromComputer() {
         Random random = new Random();
@@ -143,25 +146,28 @@ public class WordleGame {
             return hintFromComputer;
         }
     }
+
     //Запоминаем буквы на правильных местах
     protected void updateExactLetters(String userWord, String hint) {
-        for(int i = 0; i < exactLetters.length(); i++) {
+        for (int i = 0; i < exactLetters.length(); i++) {
             if (hint.charAt(i) == '+') {
                 exactLetters.setCharAt(i, userWord.charAt(i));
             }
         }
     }
+
     //Запоминаем буквы, которых нет в загаданном слове
     protected void updateExcludedLetters(String userWord, String hint) {
-        for(int i = 0; i < hint.length(); i++) {
+        for (int i = 0; i < hint.length(); i++) {
             if (hint.charAt(i) == '-') {
                 excludedLetters.add(userWord.charAt(i));
             }
         }
     }
+
     //Запоминаем буквы которые есть в загаданном слове, но на другой позиции
     protected void updateDifferentPlaceLetters(String userWord, String hint) {
-        for(int i = 0; i < hint.length(); i++) {
+        for (int i = 0; i < hint.length(); i++) {
             if (hint.charAt(i) == '^') {
                 char letter = userWord.charAt(i);
                 Set<Integer> position = differentPlaceLetters.get(letter);

@@ -12,6 +12,7 @@ public class WordleDictionaryLoader {
     public WordleDictionaryLoader (PrintWriter log) {
         this.log = log;
     }
+
     //Загрузка списка слов из файла, с заменой буквы "ё" на "е" и перевод слов в нижний регистр
     protected List<String> loadListWords (String fileName) throws IOException {
         List<String> listWords = new ArrayList<>();

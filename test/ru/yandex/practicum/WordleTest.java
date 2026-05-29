@@ -9,7 +9,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WordleTest {
-
     private WordleGame game;
     private PrintWriter log = new PrintWriter(System.out);
 
