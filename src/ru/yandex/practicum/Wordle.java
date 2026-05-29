@@ -42,46 +42,48 @@ public class Wordle {
                             System.out.println("Подсказок больше нет! Яндекс в помощь.");
                         }
                         continue;
-                    } if (userWord.length() != game.getAnswer().length()) {
+                    }
+                    if (userWord.length() != game.getAnswer().length()) {
                         System.out.println("Слово должно состоять строго из " + game.getAnswer().length() + " букв!");
                         log.println("Некорректная длина слова: " + userWord.length());
                         continue;
-                    } if (dictionary.containsWords(userWord)) {
-                            String hint = game.getHint(userWord);
-                            countStep -= 1;
-                            game.addUsedWord(userWord);
-                            log.println("Осталось попыток: " + countStep + " игрок ввёл слово: " + userWord);
-                            if (game.checkCorrectAnswer(userWord)) {
-                                if (attempt == 1) {
-                                    System.out.println(userWord);
-                                    System.out.println(hint);
-                                    System.out.println("Оооооо...Ничёси! Да таких ГЕНИЕВ(как ты) ещё СВЕТ не видовал!");
-                                    log.println("Игрок угадал слово с 1-й попытки!");
-                                    isWin = true;
-                                    break;
-                                } else {
-                                    System.out.println(userWord);
-                                    System.out.println(hint);
-                                    System.out.println("Молодец, наверное. Почти красавчик/вица!");
-                                    log.println("Игрок угадал слово!");
-                                    isWin = true;
-                                    break;
-                                }
+                    }
+                    if (dictionary.containsWords(userWord)) {
+                        String hint = game.getHint(userWord);
+                        countStep -= 1;
+                        game.addUsedWord(userWord);
+                        log.println("Осталось попыток: " + countStep + " игрок ввёл слово: " + userWord);
+                        if (game.checkCorrectAnswer(userWord)) {
+                            if (attempt == 1) {
+                                System.out.println(userWord);
+                                System.out.println(hint);
+                                System.out.println("Оооооо...Ничёси! Да таких ГЕНИЕВ(как ты) ещё СВЕТ не видовал!");
+                                log.println("Игрок угадал слово с 1-й попытки!");
+                                isWin = true;
+                                break;
                             } else {
                                 System.out.println(userWord);
                                 System.out.println(hint);
-                                System.out.println("Подумай получше! У тебя осталось: " + countStep + " попыток.");
-                                log.println("Игрок ответил неправильно.");
+                                System.out.println("Молодец, наверное. Почти красавчик/вица!");
+                                log.println("Игрок угадал слово!");
+                                isWin = true;
+                                break;
                             }
                         } else {
-                            log.println("Игрок ввёл слово, которого нет в словаре.");
-                            throw new WordNotFoundInDictionary("Слово не найдено в словаре!");
+                            System.out.println(userWord);
+                            System.out.println(hint);
+                            System.out.println("Подумай получше! У тебя осталось: " + countStep + " попыток.");
+                            log.println("Игрок ответил неправильно.");
                         }
+                    } else {
+                        log.println("Игрок ввёл слово, которого нет в словаре.");
+                        throw new WordNotFoundInDictionary("Слово не найдено в словаре!");
                     }
-                if (!isWin) {
-                    System.out.println("Увы... не получилось, не фортануло! Загаданное слово: " + game.getAnswer());
-                    log.println("Игрок проиграл.");
                 }
+            if (!isWin) {
+                System.out.println("Увы... не получилось, не фортануло! Загаданное слово: " + game.getAnswer());
+                log.println("Игрок проиграл.");
+            }
         } catch (WordNotFoundInDictionary wnfid) {
             System.out.println(wnfid.getMessage());
             log.println("Введённое игроком слово отсутствует в словаре!");
