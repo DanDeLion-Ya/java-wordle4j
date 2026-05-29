@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Wordle {
-
     static Scanner scanner = new Scanner(System.in);
     private static final String GAME_LOG = "log.txt";
 

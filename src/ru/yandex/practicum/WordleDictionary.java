@@ -6,12 +6,10 @@ import java.util.Random;
 import java.io.PrintWriter;
 
 public class WordleDictionary {
-
     private List<String> words;
-
     private PrintWriter log;
 
-    WordleDictionary (List<String> words, PrintWriter log) {
+    public WordleDictionary(List<String> words, PrintWriter log) {
         this.words = words;
         this.log = log;
     }

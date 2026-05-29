@@ -26,7 +26,8 @@ public class WordleDictionaryLoader {
                         } if (word.length() == 5) {
                             listWords.add(word);
                 }
-            } log.println("В словарь загружено: " + listWords.size() + " слов.");
+            }
+            log.println("В словарь загружено: " + listWords.size() + " слов.");
         }
         return listWords;
     }
