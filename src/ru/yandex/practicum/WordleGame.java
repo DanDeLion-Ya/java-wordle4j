@@ -83,7 +83,8 @@ public class WordleGame {
                 int position = lettersAnswer.indexOf(String.valueOf(sy));
                 if (hintSymbols.charAt(i) == '+') {
                     continue;
-                } if (position != -1) {
+                }
+                if (position != -1) {
                     hintSymbols.setCharAt(i,'^');
                     lettersAnswer.deleteCharAt(position);
                 } else {
