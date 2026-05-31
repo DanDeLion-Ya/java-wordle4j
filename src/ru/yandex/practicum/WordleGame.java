@@ -63,17 +63,31 @@ public class WordleGame {
 
     //Получение символьных подсказок
     protected String getHint(String userWord) {
-        StringBuilder hintSymbols = new StringBuilder();
+        StringBuilder hintSymbols = new StringBuilder("     ");
+        StringBuilder lettersAnswer = new StringBuilder(answer);
         if (checkCorrectAnswer(userWord)) {
-            hintSymbols.append("+++++");
+            return "+++++";
         } else {
             for (int i = 0; i < answer.length(); i++) {
-                if (userWord.charAt(i) == answer.charAt(i)) {
-                    hintSymbols.append("+");
-                } else if (answer.indexOf(userWord.charAt(i)) != -1) {
-                    hintSymbols.append("^");
+                char sy = userWord.charAt(i);
+                int position = lettersAnswer.indexOf(String.valueOf(sy));
+                if (sy == answer.charAt(i)) {
+                    hintSymbols.setCharAt(i,'+');
+                    if (position != -1) {
+                        lettersAnswer.deleteCharAt(position);
+                    }
+                }
+            }
+            for (int i = 0; i < answer.length(); i++) {
+                char sy = userWord.charAt(i);
+                int position = lettersAnswer.indexOf(String.valueOf(sy));
+                if (hintSymbols.charAt(i) == '+') {
+                    continue;
+                } if (position != -1) {
+                    hintSymbols.setCharAt(i,'^');
+                    lettersAnswer.deleteCharAt(position);
                 } else {
-                    hintSymbols.append("-");
+                    hintSymbols.setCharAt(i,'-');;
                 }
             }
         }

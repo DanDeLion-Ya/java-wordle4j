@@ -19,11 +19,12 @@ public class WordleDictionary {
     }
 
     //Проверка, содержится ли переданное слово(введённое пользователем) в списке
-    public boolean containsWords(String userWord) {
+    public boolean containsWords(String userWord) throws WordNotFoundInDictionary {
         if (words.contains(userWord)) {
             return true;
         } else {
-            return false;
+            log.println("Игрок ввёл слово, которого нет в словаре.");
+            throw new WordNotFoundInDictionary("Слово в словаре не найдено!");
         }
     }
 
